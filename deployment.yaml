@@ -24,12 +24,14 @@ spec:
           env:
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
-                name: secret-postgres
-                key: user
+                secretKeyRef:
+                  name: secret-postgres
+                  key: user
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
-                name: secret-postgres
-                key: password
+                secretKeyRef:
+                  name: secret-postgres
+                  key: password
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-manifest:5432/demo
           resources:
